@@ -12,4 +12,4 @@ elif last > 5:
     print("last digit of {0:d} is {1:d}".format(number, last), end=" ")
     print("and is greater than 5")
 else:
-    print("last digit of {0:d} is {1:d} and is 0".format(number, last))
+    print("last digit of {0:d} is 0 and is 0".format(number, last))
