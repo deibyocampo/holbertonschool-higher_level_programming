@@ -13,4 +13,3 @@ if __name__ == "__main__":
         for index, date in enumerate(sys.argv):
             if index != 0:
                 print("{}: {}".format(index, date))
-
