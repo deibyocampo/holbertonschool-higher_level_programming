@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-for n in range(ord('z'), ord('a') -1, -1):
-    if n % 2 == 0:
-        print("{}".format(chr(n - 32)), end='')
-#    else:
-#        print("{}".format(chr(n)), end='')
+n = 122
+while (n > 96):
+    lett = n
+    if n % 2 != 0:
+        lett = n - 32
+    print('{}'.format(chr(lett)), end="")
+    n -= 1
