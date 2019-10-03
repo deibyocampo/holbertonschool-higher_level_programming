@@ -55,7 +55,6 @@ class Square:
             tmpstr = ""
         else:
             for i in range(self.__size):
-                tmplist.append("{}{}".format("_" * self.__position[0], "#" * self.__size))
-
+                tmplist.append("{}{}".format(" " * self.__position[0], "#" * self.__size))
             tmpstr = "\n" * self.__position[1] + "\n".join(tmplist)
         return tmpstr
