@@ -3,18 +3,8 @@ class Square:
     """ Initialize square class instance with size """
     def __init__(self, size=0, position=(0, 0)):
         """ instance whith size and check for exceptions """
-        if type(size) != int:
-            raise TypeError("size must be an integer")
-        if size < 0:
-            raise ValueError("size must be >= 0")
-        self.__size = size
-
-        if type(position) != tuple:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        if len(position) == 2 and type(position[0]) == int and position[0] >= 0 and type(position[1]) == int and position[1] >= 0:
-                self.__position = position
-        else:
-            raise TypeError("position must be a tuple of 2 positive integers")
+        self.size = size
+        self.position = position
 
     def area(self):
         """ area of a square instance """
@@ -33,50 +23,39 @@ class Square:
     @size.setter
     def size(self, value):
         """ setter size """
-        if type(value) != int:
+        if not isinstance(value, int):
             raise TypeError("size must be an integer")
-        if value < 0:
+        if (value < 0):
             raise ValueError("size must be >= 0")
         self.__size = value
 
     @position.setter
     def position(self, value):
         """ setter position """
-        if type(value, value):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        if len(position) == 2 and type(position[0]) == int and position[0] >= 0 and type(position[1]) == int and position[1] >= 0:
-            self.__position = value
-        else:
-            raise TypeError("position must be a tuple of 2 positive integers")
+        if (len(value) != 2 or
+                not all(isinstance(i, int) for i in value) or
+                not all(i >= 0 for i in value)):
+            raise TypeError("position must br a tuple of 2 positive integers")
+        self.__position = value
 
     def my_print(self):
         """ prints a square made up of # """
-        if self.__size != 0:
-            for y in range(self.__position[1]):
-                print()
-            for i in range(self.__size):
-                for x in range(self.__position[0]):
-                    print("_", end="")
-                for j in range(self.__size):
-                    print("#", end="")
-                print()
-        else:
+        if self.__size == 0:
             print()
+        else:
+            print("\n" * self.__position[1], end="")
+        for i in range(self.__size):
+            print("{}{}".format(" " * self.__position[0], "#" * self.__size))
 
     def __str__(self):
         """ prints a square made up of # """
-        a = ""
-        if self.__size != 0:
-            a = '\n' * self.__position[1]
-            for i in range(self.__size):
-                a = a + "_" * self.__position[0]
-                a = a + "#" * self.__size
-                if i < self.__size - 1:
-                    a = a + '\n'
-            return (a)
+        tmpstr = ""
+        tmplist = []
+        if self.__size == 0:
+            tmpstr = ""
         else:
-            return ("")
+            for i in range(self.__size):
+                tmplist.append("{}{}".format("_" * self.__position[0], "#" * self.__size))
 
-    def __repr__(self):
-        """ print square made up of # """
-        return self.__str__()
+            tmpstr = "\n" * self.__position[1] + "\n".join(tmplist)
+        return tmpstr
