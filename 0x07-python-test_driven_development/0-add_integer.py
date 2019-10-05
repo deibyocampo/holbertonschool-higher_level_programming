@@ -1,14 +1,6 @@
 #!/usr/bin/python3
-"""An addition module
-add_integer adds two integers together
-
-"""
-
-
 def add_integer(a, b=98):
-    """ Return a + b
-    Args: a and b
-    """
+    """ integers addition a and b """
     if isinstance(a, float):
         a = int(a)
     if isinstance(b, float):
@@ -17,4 +9,4 @@ def add_integer(a, b=98):
         raise TypeError("a must be an integer")
     if not isinstance(b, int):
         raise TypeError("b must be an integer")
-    return (int(a) + int(b))
+    return a + b
