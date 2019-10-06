@@ -18,7 +18,7 @@ TypeError: Each row of the matrix must have the same size
 Traceback (most recent call last):
 	   ...
 TypeError: matrix must be a matrix (list of lists) of integers/floats
->>> matrix = "holberton"
+>>> matrix = "Hello"
 >>> matrix_divided(matrix, 2)
 Traceback (most recent call last):
 	    ...
