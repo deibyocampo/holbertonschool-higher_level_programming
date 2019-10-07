@@ -21,8 +21,16 @@ TypeError: text must be a string
 Traceback (most recent call last):
 TypeError: text must be a string
 
->>> text_indentation("Lorem ipsum dolor sit amet,")
-Lorem ipsum dolor sit amet,
+>>> text_indentation("Lorem ipsum dolor sit amet ")
+Lorem ipsum dolor sit amet
+
+>>> text_indentation("Holberton School")
+Holberton School
+
+>>> text_indentation("Holberton.School")
+Holberton.
+<BLANKLINE>
+School
 
 >>> text_indentation()
 Traceback (most recent call last):
