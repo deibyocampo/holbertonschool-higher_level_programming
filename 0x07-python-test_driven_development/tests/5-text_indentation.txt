@@ -1,6 +1,7 @@
 >>> text_indentation = __import__('5-text_indentation').text_indentation
 
-# long string
+# Function that prints a text with 2 new lines
+
 >>> text_indentation(1)
 Traceback (most recent call last):
 TypeError: text must be a string
@@ -24,13 +25,13 @@ TypeError: text must be a string
 >>> text_indentation("Lorem ipsum dolor sit amet ")
 Lorem ipsum dolor sit amet
 
->>> text_indentation("Holberton School")
-Holberton School
+>>> text_indentation("Hello World")
+Hello World
 
->>> text_indentation("Holberton.School")
-Holberton.
+>>> text_indentation("Hello.World")
+Hello.
 <BLANKLINE>
-School
+World
 
 >>> text_indentation()
 Traceback (most recent call last):
