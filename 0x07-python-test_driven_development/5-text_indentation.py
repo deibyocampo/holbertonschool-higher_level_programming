@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 def text_indentation(text):
+    """ function that prints a text whith 2 new lines """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
     for i in ['.', '?', ':']:
