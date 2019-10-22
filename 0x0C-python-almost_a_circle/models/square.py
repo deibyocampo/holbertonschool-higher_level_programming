@@ -13,3 +13,21 @@ class Square(Rectangle):
                 self.y,
                 self.width
                 )
+
+    @property
+    def size(self):
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        self.width = value
+        self.height = value
+
+    def update(self, *args, **kwargs):
+        square_args = ["id", "size", "x", "y"]
+        if args:
+            for idx, value in enumerate(args):
+                setattr(self, square_args[idx], value)
+        elif kwargs:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
