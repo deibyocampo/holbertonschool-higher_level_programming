@@ -68,6 +68,15 @@ class Rectangle(Base):
                 self.__height
                 )
 
+    def update(self, *args, **kwargs):
+        up_date = ["id", "width", "height", "x", "y"]
+        if args:
+            for idx, value in enumerate(args):
+                setattr(self, up_date[idx], value)
+        elif kwargs:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
     def integer_validator(self, name, value):
         if not type(value) is int:
             raise TypeError("{} must be an integer".format(name))
