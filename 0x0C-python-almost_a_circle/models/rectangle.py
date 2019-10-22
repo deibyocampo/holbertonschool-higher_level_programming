@@ -49,6 +49,16 @@ class Rectangle(Base):
     def area(self):
         return (self.width * self.height)
 
+    def display(self):
+        for fil in range(self.y):
+            print()
+        for fill in range(self.height):
+            for col in range(self.x):
+                print(" ", end="")
+            for coll in range(self.width):
+                print("#", end="")
+            print()
+
     def integer_validator(self, name, value):
         if not type(value) is int:
             raise TypeError("{} must be an integer".format(name))
