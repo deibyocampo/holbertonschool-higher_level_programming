@@ -59,6 +59,15 @@ class Rectangle(Base):
                 print("#", end="")
             print()
 
+    def __str__(self):
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+                self.id,
+                self.__x,
+                self.__y,
+                self.__width,
+                self.__height
+                )
+
     def integer_validator(self, name, value):
         if not type(value) is int:
             raise TypeError("{} must be an integer".format(name))
