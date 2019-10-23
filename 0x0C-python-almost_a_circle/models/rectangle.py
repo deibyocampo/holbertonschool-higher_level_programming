@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-""" Rectangle class """
+""" create Rectangle class """
 
 
 from models.base import Base
 
 
 class Rectangle(Base):
+    """ Rectangle class intherance Base class """
     def __init__(self, width, height, x=0, y=0, id=None):
         """ Rectangle class that inherited
             attributes of Base class
