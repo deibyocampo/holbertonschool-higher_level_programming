@@ -21,7 +21,7 @@ class Base:
     def to_json_string(list_dictionaries):
         """ string of dictionary to JSON """
         if list_dictionaries is None:
-            return ("[]")
+            return "[]"
         else:
             return (json.dumps(list_dictionaries))
 
@@ -57,10 +57,17 @@ class Base:
     @classmethod
     def load_from_file(cls):
         """ files to instance """
+        file_name = cls.__name__ + ".json"
+        my_list = []
+
+        if my_list is None:
+            return ([])
         try:
-            with open(cls.__name__ + 'json', encoding='utf-8') as f:
-                ls = cls.from_json_string(f.readline())
+            with open(file_name, mode="r") as f:
+                read_file = f.readline()
+                from_json = cls.from_json_string(read_file)
+            for element in from_json:
+                my_list.append(cls.create(**element))
+            return my_list
         except FileNotFoundError:
-            ls = []
-        finally:
-            return [cls.create(**e) for e in ls]
+            return (my_list)
