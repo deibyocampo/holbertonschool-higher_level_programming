@@ -25,7 +25,6 @@ class Base:
             return "[]"
         return __import__('json').dumps(list_dictionaries)
 
-
     @staticmethod
     def from_json_string(json_string):
         """ string JSON to dictionary """
