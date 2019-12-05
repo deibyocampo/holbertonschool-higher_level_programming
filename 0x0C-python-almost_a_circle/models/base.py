@@ -3,6 +3,7 @@
 
 
 import json
+import csv
 
 
 class Base:
@@ -20,10 +21,9 @@ class Base:
     @staticmethod
     def to_json_string(list_dictionaries):
         """ string of dictionary to JSON """
-        if list_dictionaries is None:
+        if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
-        else:
-            return (json.dumps(list_dictionaries))
+        return __import__('json').dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
@@ -58,6 +58,35 @@ class Base:
     def load_from_file(cls):
         """ files to instance """
         file_name = cls.__name__ + ".json"
+        my_list = []
+
+        if my_list is None:
+            return ([])
+        try:
+            with open(file_name, mode="r") as f:
+                read_file = f.readline()
+                from_json = cls.from_json_string(read_file)
+            for element in from_json:
+                my_list.append(cls.create(**element))
+            return my_list
+        except FileNotFoundError:
+            return (my_list)
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """ writes the JSON string representation """
+        file_name = ("{}.csv".format(cls.__name__))
+        json_list = []
+        if list_objs:
+            for ls in list_objs:
+                json_list.append(cls.to_dictionary(ls))
+        with open(file_name, mode="w") as f:
+            f.write(cls.to_json_string(json_list))
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """ files to instance """
+        file_name = cls.__name__ + ".cvs"
         my_list = []
 
         if my_list is None:
