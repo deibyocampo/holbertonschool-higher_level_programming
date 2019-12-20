@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-""" Display all values in the states table where name matches the argument
-"""
+""" Display all values in the states table where name matches
+the argument and prevent a SQL injection """
 
 
 import MySQLdb
@@ -13,9 +13,8 @@ if __name__ == "__main__":
 
     cur = db.cursor()
     cur.execute("SELECT *\
-    FROM states WHERE states.name\
-    LIKE BINARY '{}'\
-    ORDER by states.id ASC".format(sys.argv[4]))
+    FROM states WHERE states.name =%s\
+    ORDER BY id ASC", (sys.argv[4],))
 
     query_rows = cur.fetchall()
     for row in query_rows:
