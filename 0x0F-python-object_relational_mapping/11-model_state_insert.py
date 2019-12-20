@@ -16,7 +16,7 @@ if __name__ == "__main__":
     session = sessionmaker(bind=engine)
     sesh = session()
 
-    new_obj = State(name="louisiana")
+    new_obj = State(name="Louisiana")
     sesh.add(new_obj)
     sesh.commit()
 
