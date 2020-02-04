@@ -1,7 +1,8 @@
 #!/usr/bin/node
-let index = process.argv.slice(2);
+const index = process.argv.slice(2);
 if (index < 1) {
   console.log('No argument');
-} else {
+}
+if (index !== 1) {
   console.log(`${index}`);
 }
