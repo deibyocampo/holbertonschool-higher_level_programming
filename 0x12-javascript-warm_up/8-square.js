@@ -7,7 +7,7 @@ if (isNaN(argum)) {
   for (let x = 0; x < argum; x++) {
     row.push('X');
   }
-  for (let y = 0; y < argum; y++) {
+  for (let x = 0; x < argum; x++) {
     console.log(row.join(' '));
   }
 }
