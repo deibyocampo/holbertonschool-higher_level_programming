@@ -2,15 +2,17 @@
 """
 searches star wars API with string
 """
-import sys
 import requests
+from sys import argv
 
 
 if __name__ == "__main__":
-    search = {'search': sys.argv[1]}
-    req = requests.get('https://swapi.co/api/people', params=search)
+    search = argv[1]
+    req = requests.get('https://swapi.co/api/people', params={'search': search})
     results = req.json()
-    count = results.get('count')
-    print("Number of results: {}".format(count))
-    for i in results.get('results'):
-        print(i.get('name'))
+
+    print("Number of results: {}".format(results['count']))
+
+    if results['count'] > 0:
+        for i in results['results']:
+            print(i['name'])
