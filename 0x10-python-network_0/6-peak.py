@@ -4,18 +4,22 @@
 
 def find_peak(list_of_integers):
     """ Function to find peak in array """
-    peak = 0
     if len(list_of_integers) == 0:
         return None
+    if len(list_of_integers) == 1:
+        return list_of_integers[0]
+    if list_of_integers[1] <= list_of_integers[0]:
+        return list_of_integers[0]
+    if list_of_integers[-1] >= list_of_integers[-2]:
+        return list_of_integers[-1]
 
-    for i in range(len(list_of_integers) - 1):
-        next_int = i + 1
-        if list_of_integers[next_int] >= list_of_integers[i]:
-            if len(list_of_integers) <= 3\
-               and list_of_integers[next_int] >= list_of_integers[i]:
-                peak = list_of_integers[next_int]
-            if i != 0 and next_int != len(list_of_integers) - 1:
-                peak = list_of_integers[next_int]
-        else:
-            continue
-    return peak
+    mid = len(list_of_integers) // 2
+    if list_of_integers[mid] >= list_of_integers[mid - 1]\
+            and list_of_integers[mid] >= list_of_integers[mid + 1]:
+        return list_of_integers[mid]
+
+    if list_of_integers[mid + 1] > list_of_integers[mid]:
+        return(find_peak(list_of_integers[mid + 1:len(list_of_integers)]))
+
+    if list_of_integers[mid - 1] > list_of_integers[mid]:
+        return(find_peak(list_of_integers[0:mid]))
