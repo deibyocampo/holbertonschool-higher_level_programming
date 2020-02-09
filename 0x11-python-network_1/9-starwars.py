@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-searches star wars API
+searches star wars API with string
 """
 import sys
 import requests
