@@ -4,9 +4,8 @@
 
 def find_peak(list_of_integers):
     """ Function to find peak in array """
-    if list_of_integers:
-        peak = list_of_integers[0]
-        return peak
+    if len(list_of_integers) == 0:
+        return None
 
     for i in range(len(list_of_integers)):
         if i != len(list_of_integers) - 1:
