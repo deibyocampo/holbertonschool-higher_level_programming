@@ -8,16 +8,10 @@ import requests
 from sys import argv
 
 if __name__ == '__main__':
-    repo = argv[1]
-    owner = argv[1]
+    req = requests.get('https://api.github.com/repos/{}/{}/commits'
+                       .format(argv[2], argv[1]))
 
-    url = 'https://api.github.com/repos/{}/{}/commits'.format(owner, repo)
-
-    r = requests.get(url)
-    commits = r.json()
-
-    for i in range(10):
-        commit = commits[i]
-        name = ((commit['commit'])['author'])['name']
-        sha = commit['sha']
-        print("{}: {}".format(sha, name))
+    commit = req.json()
+    for commit in commit[:10]:
+        print(commit.get('sha'), end=': ')
+        print(commit.get('commit').get('author').get('name'))
