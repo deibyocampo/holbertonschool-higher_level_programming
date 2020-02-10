@@ -8,6 +8,6 @@ if (isNaN(argum)) {
     row.push('X');
   }
   for (let x = 0; x < argum; x++) {
-    console.log(row.join(' '));
+    console.log(row.join(''));
   }
 }
