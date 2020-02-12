@@ -2,17 +2,23 @@
 // Prints the title of a star wars movies
 
 const request = require('request');
-let url;
-const argv = process.argv;
-if (argv[2] === 'http://swapi.co/api/films') {
-  url = 'https://swapi.co/api/people/18';
-}
+const url = process.argv[2];
 
 request(url, function (err, response, actor) {
   if (err) {
     console.log(err);
-  } else if (response && actor) {
-    const films = JSON.parse(actor);
-    console.log(films['films'].length);
+  } else if (response.statusCode === 200) {
+    const films = JSON.parse(actor).results;
+    let count = 0;
+    for (let i = 0; i < films.length; i++) {
+      for (let j = 0; j < films[i].characters.length; j++) {
+        if (films[i].characters[j].includes('/18/')) {
+          count++;
+        }
+      }
+    }
+    console.log(count);
+  } else {
+    console.log('Invalid');
   }
 });
