@@ -13,6 +13,6 @@ request(url, function (err, response, actor) {
     console.log(err);
   } else if (response && actor) {
     const films = JSON.parse(actor);
-    console.log(films.films.length);
+    console.log(films['films'].length);
   }
 });
