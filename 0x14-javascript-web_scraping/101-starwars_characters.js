@@ -1,4 +1,5 @@
 #!/usr/bin/node
+// Right order
 const request = require('request');
 const URI = `http://swapi.co/api/films/${process.argv[2]}`;
 
@@ -17,8 +18,8 @@ function doRequest (url) {
 
 request(URI, function (error, res, body) {
   if (error) console.log(error);
-    const characters = JSON.parse(body).characters;
-    getcharacter(characters);
+  const characters = JSON.parse(body).characters;
+  getcharacter(characters);
 });
 
 const getcharacter = async (characters) => {
